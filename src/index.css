@@ -1,0 +1,206 @@
+@import '@fontsource/playfair-display/400.css';
+@import '@fontsource/playfair-display/500.css';
+@import '@fontsource/playfair-display/600.css';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 8%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 8%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 8%;
+
+    --primary: 330 100% 70%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 0 0% 8%;
+
+    --muted: 210 20% 96%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 210 60% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 330 100% 70%;
+
+    --radius: 0.25rem;
+
+    /* Custom tokens */
+    --pink: 330 100% 70%;
+    --blue-light: 210 60% 85%;
+    --blue-accent: 210 60% 50%;
+    --resources-blue: 220 55% 71%;
+    --resources-gold: 46 85% 76%;
+    --quote-red: 0 70% 50%;
+    --gray-button: 0 0% 45%;
+    
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 0 0% 20%;
+    --sidebar-primary: 330 100% 70%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 40% 96%;
+    --sidebar-accent-foreground: 0 0% 8%;
+    --sidebar-border: 0 0% 90%;
+    --sidebar-ring: 330 100% 70%;
+  }
+
+  .dark {
+    --background: 0 0% 5%;
+    --foreground: 0 0% 95%;
+
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 330 100% 70%;
+    --primary-foreground: 0 0% 5%;
+
+    --secondary: 210 30% 15%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 210 20% 15%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 210 60% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 95%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 330 100% 70%;
+
+    --sidebar-background: 0 0% 8%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 330 100% 70%;
+    --sidebar-primary-foreground: 0 0% 5%;
+    --sidebar-accent: 210 30% 15%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-ring: 330 100% 70%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .nav-link {
+    @apply text-foreground hover:text-primary transition-colors duration-200 text-sm uppercase tracking-wider;
+  }
+
+  .nav-link-active {
+    @apply text-primary border-b-2 border-primary;
+  }
+
+  .blockquote-pink {
+    @apply text-primary italic font-display text-xl md:text-2xl leading-relaxed;
+  }
+
+  .blockquote-home {
+    @apply text-foreground italic font-display text-xl md:text-3xl leading-relaxed;
+  }
+
+  .btn-gray {
+    @apply bg-gray-button text-primary-foreground px-6 py-3 rounded font-medium 
+           hover:bg-gray-button/80 transition-all duration-200 uppercase tracking-wider text-sm;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-primary-foreground px-6 py-3 rounded font-medium 
+           hover:bg-primary/90 transition-all duration-200 uppercase tracking-wider text-sm;
+  }
+
+  .btn-outline {
+    @apply border border-foreground text-foreground px-6 py-3 rounded font-medium 
+           hover:bg-foreground hover:text-background transition-all duration-200 uppercase tracking-wider text-sm;
+  }
+
+  .section-container {
+    @apply max-w-6xl mx-auto px-4 md:px-8;
+  }
+
+  .page-title {
+    @apply text-3xl md:text-4xl lg:text-5xl font-display text-primary font-medium;
+  }
+
+  .content-row {
+    @apply grid grid-cols-1 gap-8 md:gap-12 items-center;
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 768px) {
+    .content-row {
+      grid-template-columns: 60% 40%;
+    }
+  }
+
+  .content-row-reverse {
+    @apply grid grid-cols-1 gap-8 md:gap-12 items-center;
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 768px) {
+    .content-row-reverse {
+      grid-template-columns: 40% 60%;
+    }
+  }
+
+  .content-row-reverse > div:first-child {
+    @apply order-2 md:order-1;
+  }
+
+  .content-row-reverse > div:last-child {
+    @apply order-1 md:order-2;
+  }
+
+  .content-image {
+    @apply w-full h-auto rounded shadow-sm;
+  }
+
+  .content-text {
+    @apply text-foreground leading-relaxed;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-body {
+    font-family: var(--font-body);
+  }
+}
